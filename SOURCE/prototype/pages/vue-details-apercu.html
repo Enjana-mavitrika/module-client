@@ -1,0 +1,374 @@
+<!-- 
+    Auteur: S.RABONARIJAONA
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- Utiliser la bibliothèque de style bootstrap v.4.0.0 -->
+    <link rel="stylesheet" href="../lib/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script src="../lib/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Utiliser les icon Solid de la librairie font awesome v.5.13.0 -->
+    <link href="../lib/fontawesome-5.13.0/css/solid.min.css" rel="stylesheet">
+    <link href="../lib/fontawesome-5.13.0/css/fontawesome.min.css" rel="stylesheet">
+    <script defer src="../lib/fontawesome-5.13.0/js/fontawesome.min.js"></script>
+    <script defer src="../lib/fontawesome-5.13.0/js/solid.min.js"></script>
+
+    <!-- Utiliser la librairie SplitJS v.1.5.11 pour gérer le redimenssionnement des panels -->
+    <script src="../lib/splitjs-1.5.11/split.min.js"></script>
+
+    <!-- Utiliser la librairie Micromodal.js v.1.0.0 pour gérer l'affichage en modal -->
+    <link rel="stylesheet" href="../lib/micromodal-1.0.0/micromodal.css" />
+    <!-- Utiliser la librairie Datatables pour gérer la liste des clients dans un tableaux -->
+    <link href="../lib/DataTables/datatables.min.css" />
+
+    <style>
+        /* Personnaliser le style des éléments générer par Datatables.js */
+        #liste-client_filter label {
+            width: 80% !important;
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+            flex-direction: row-reverse;
+        }
+
+        #liste-client_filter label i {
+            width: 10% !important;
+        }
+
+        #liste-client_filter label input {
+            width: 80% !important;
+        }
+        /* Style du tableau */
+        #liste-client {
+            margin-top: 20px !important;
+        }   
+        #section-list-client{
+            max-height: 700px!important;
+            overflow-y: scroll!important;
+            overflow-x: auto;
+        }
+    </style>
+
+    <style>
+        li {
+            list-style-type: none;
+        }
+
+        ul {
+            margin-top: 15px;
+        }
+
+        .flex {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .gutter.gutter-horizontal {
+            background-image: url('../lib/fontawesome-5.13.0/svgs/solid/grip-vertical.svg');
+            background-position-y: 50%;
+            background-repeat: no-repeat;
+            cursor: ew-resize;
+            z-index: 10000;
+        }
+
+        .card {
+            min-height: 500px !important;
+        }
+
+        #pas-de-selection {
+            margin-top: 150px;
+        }
+
+        tr:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <a class="navbar-brand">CLIENTS</a>
+            <a class="btn btn-outline-secondary" href="vue-modif-client.html"><i
+                class="fas fa-plus"></i> Ajouter un client</a>
+        </nav>
+    </header>
+
+    <main class="container-fluid">
+        <div class="flex">
+            <section id="section-list-client">
+                <table class="table table-hover table-responsive-md" id="liste-client">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Catégorie <i class="fas fa-sort"></i></th>
+                            <th scope="col">Code <i class="fas fa-sort"></i></th>
+                            <th scope="col">Nom <i class="fas fa-sort"></i></th>
+                            <th scope="col">Code postal <i class="fas fa-sort"></i></th>
+                            <th scope="col">Ville <i class="fas fa-sort"></i></th>
+                            <th scope="col">Solde <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-info">
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>SRAB</td>
+                            <td>SOLOFO RABONARIJAONA</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">5 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-info">Prospect</span></td>
+                            <td>JDIA</td>
+                            <td>JANE DIAS</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right"><span class="text-danger">-150,00 &euro;</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>JDOE</td>
+                            <td>JOHN DOE</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">300,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>BFIS</td>
+                            <td class="text-danger">BOB FISHER</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">150,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>DBAR</td>
+                            <td>DAN BARON</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">3 400,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>LALI</td>
+                            <td>LAYLA ALI</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">25 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>BGAT</td>
+                            <td>BILL GATES</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">20 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>SJOB</td>
+                            <td>STEVE JOBS</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">20 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>LTOR</td>
+                            <td>LINUX TORVALDS</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">15 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>MJOR</td>
+                            <td>MICKAEL JORDAN</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">30 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-info">Prospect</span></td>
+                            <td>MZUK</td>
+                            <td>MARC ZUKERBERG</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">20 000,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>RALL</td>
+                            <td>RUDY ALLEN</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">1 500,00 &euro;</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-success">Client</span></td>
+                            <td>BWIL</td>
+                            <td>BRUCE WILLICE</td>
+                            <td>42000</td>
+                            <td>St-Etienne</td>
+                            <td class="text-right">600,00 &euro;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="section-details-client">
+                <div class="card bg-light">
+                    <div class="card-header bg-dark text-white">DETAILS</div>
+                    <div class="card-body">
+                        <h5>
+                            <i class="fas fa-user-circle"></i> M. SOLOFO RABONARIJAONA
+                        </h5>
+                        <ul>
+                            <li>Particulier</li>
+                            <li>Stagiaire</li>
+                            <li>
+                                <ul>
+                                    <li><i class="fas fa-phone-alt"></i> 04 02 03 04 05</li>
+                                    <li><i class="fas fa-mobile-alt"></i> 06 02 03 04 05</li>
+                                    <li><i class="fas fa-print"></i> 04 02 03 05 06</li>
+                                    <li><i class="fas fa-envelope"></i> <a
+                                            href="mailto:solofo.rabonarijaona@test.fr">solofo.rabonarijaona@test.fr</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <hr />
+                        <h5>
+                            ADRESSE DEVIS
+                        </h5>
+                        <div class="row">
+                            <div class="col-3 text-right"><i class="fas fa-map-marker-alt"></i></div>
+                            <ul class="col-9">
+                                <li>46 rue de la télématique</li>
+                                <li>Le Polygone</li>
+                                <li>42000 St-Etienne</li>
+                                <li>France</li>
+                            </ul>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-5">
+                                <a class="btn btn-primary" href="vue-fiche-client.html">En savoir plus</a>
+                            </div>
+                            <div class="col-5">
+                                <a class="btn btn-primary" href="vue-modif-client.html">Modifier</a>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-danger" data-custom-open="modal-1"><i
+                                        class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted bg-secondary">
+                        <div class="row text-white">
+                            <div class="col-8"><i class="fas fa-tag"></i> Solde</div>
+                            <div class="col-4 text-right">5 000,00 &euro;</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- MODALS -->
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <header class="modal__header">
+                    <h2 class="modal__title" id="modal-1-title">
+                        <i class="fas fa-trash-alt"></i> Suppression d'un client
+                    </h2>
+                    <button class="modal__close" aria-label="Close modal" data-micromodal-close
+                        data-custom-close="modal-1"></button>
+                </header>
+                <main class="modal__content" id="modal-1-content">
+                    <p>
+                        Êtes-vous sûr de vouloir supprimer le client <code>SRAB - SOLOFO RABONARIJAONA</code>
+                    </p>
+                </main>
+                <footer class="modal__footer">
+                    <button class="btn btn-danger">Oui, supprimer</button>
+                    <button data-custom-close="modal-1" class="btn btn-secondary" data-micromodal-close
+                        aria-label="Close this dialog window">Annuler</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- dependance micromodal.js + config -->
+    <script src="../lib/micromodal-1.0.0/micromodal.min.js"></script>
+    <script>
+        MicroModal.init({
+            openTrigger: 'data-custom-open', // [3]
+            closeTrigger: 'data-custom-close', // [4]
+            openClass: 'is-open', // [5]
+            disableScroll: true, // [6]
+            disableFocus: false, // [7]
+            awaitOpenAnimation: true, // [8]
+            awaitCloseAnimation: true, // [9]
+            debugMode: false // [10]
+        });
+    </script>
+
+    <!-- dependance split.js + config -->
+    <script>
+        Split(['#section-list-client', '#section-details-client'], {
+            sizes: [70, 30],
+            gutterAlign: 'end',
+            gutterSize: 12,
+            elementStyle: (dimension, size, gutterSize) => ({
+                'flex-basis': `calc(${size}% - ${gutterSize}px)`,
+            }),
+            gutterStyle: (dimension, gutterSize) => ({
+                'flex-basis': `${gutterSize}px`,
+            }),
+        })
+    </script>
+
+    <script src="../lib/DataTables/jquery-3.5.1/jquery.min.js"></script>
+    <script src="../lib/DataTables/datatables.min.js"></script>
+
+    <script>
+        // Configurer Datatables
+        $('#liste-client').DataTable({
+            language: {
+                processing: "Traitement en cours...",
+                search: '<i class="fas fa-search text-success" style="font-size: 20px;"></i>',
+                lengthMenu: "_MENU_",
+                info: "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty: "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix: "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords: '<p class="text-danger text-center">Aucun client ne correspond &agrave; votre recherche</p>',
+                emptyTable: "Aucun client disponible",
+                paginate: {
+                    first: "Premier",
+                    previous: "Pr&eacute;c&eacute;dent",
+                    next: "Suivant",
+                    last: "Dernier"
+                },
+                aria: {
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+
+        // ajouter le placeholder : "Votre recherche" à l'input de recherche
+        document.querySelector("input[type='search']").setAttribute("placeholder", "Votre recherche...")
+    </script>
+
+
+</body>
+
+</html>

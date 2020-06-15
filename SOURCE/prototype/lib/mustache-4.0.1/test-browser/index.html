@@ -1,0 +1,21 @@
+<html>
+  <body onload="renderHello()">
+    <button onclick="renderListeNom(2)">Afficher liste nom</button>
+    <div id="target">Loading...</div>
+    <script id="template" type="x-tmpl-mustache">
+      Hello {{ name }}!
+    </script> 
+
+    <ul>
+        <div id="target-liste-nom">Loading...</div>
+        <script id="liste-nom" type="x-tmpl-mustache">
+            {{#listeNom}}
+            <li>{{.}}</li>
+            {{/listeNom}}
+        </script>
+    </ul>
+ 
+    <script src="mustache.js"></script> 
+    <script src="render.js"></script> 
+  </body>
+</html>

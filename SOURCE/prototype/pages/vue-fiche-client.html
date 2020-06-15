@@ -1,0 +1,179 @@
+<!-- 
+    Auteur: S.RABONARIJAONA
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- Utiliser la bibliothèque de style bootstrap v.4.0.0 -->
+    <link rel="stylesheet" href="../lib/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script src="../lib/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Utiliser les icon Solid de la librairie font awesome v.5.13.0 -->
+    <link href="../lib/fontawesome-5.13.0/css/solid.min.css" rel="stylesheet">
+    <link href="../lib/fontawesome-5.13.0/css/fontawesome.min.css" rel="stylesheet">
+    <script defer src="../lib/fontawesome-5.13.0/js/fontawesome.min.js"></script>
+    <script defer src="../lib/fontawesome-5.13.0/js/solid.min.js"></script>
+
+    <!-- Utiliser la librairie SplitJS v.1.5.11 pour gérer le redimenssionnement des panels -->
+    <script src="../lib/splitjs-1.5.11/split.min.js"></script>
+    <style>
+        form {
+            margin-top: 50px;
+        }
+
+        h5 {
+            padding: 20px 0px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #section-fiche-client {
+            height: 600px;
+            overflow-y: scroll;
+        }
+
+        span.badge {
+            padding: 5px 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light justify-content-between">
+                <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="../index.html">Client</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Détail client</li>
+                        </ol>
+                        </nav>
+            <a class="navbar-brand">SOLOFO RABONARIJAONA</a>
+        </nav>
+    </header>
+
+    <main class="container-fluid">
+        <div class="row">
+            <nav class="col-3 position-static">
+                <div class="list-group">
+                    <a href="vue-fiche-client.html" class="list-group-item list-group-item-action active">
+                        Informations générales
+                    </a>
+                    <a href="vue-interlocuteur-client.html" class="list-group-item list-group-item-action">Interlocuteur</a>
+                    <a href="vue-comment-client.html" class="list-group-item list-group-item-action">Commentaire</a>
+
+                </div>
+            </nav>
+
+            <section class="col-9" id="section-fiche-client">
+
+                <main>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <h6 class="col-2">Nom</h6>
+                                <p class="col-8" id="nom">SOLOFO RABONARIJAONA</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-2">Catégorie</h6>
+                                <p class="col-8"><span class="badge badge-success">Client</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h6 class="col-2">Etat</h6>
+                                <p class="col-8">Actif</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-2">Code</h6>
+                                <p class="col-8">SRAB</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-2">Statut</h6>
+                                <p class="col-8">Particulier</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Informations</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <h6 class="col-3">Tél.</h6>
+                                <p class="col-8">04 02 03 04 05</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-3">Mobile 1</h6>
+                                <p class="col-8">06 02 03 04 05</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-3">Mobile 2</h6>
+                                <p class="col-8">non renseigné</p>
+                            </div>
+                            <div class="form-group row">
+                                <h6 class="col-3">Fax</h6>
+                                <p class="col-8">04 02 03 05 06</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="row">
+                                <h6 class="col-4">Type de client</h6>
+                                <p class="col-6">Stagiaire</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-4">Email</h6>
+                                <p class="col-6"><a href="mailto:solofo.rabonarijaona@test.fr">solofo.rabonarijaona@test.fr</a></p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-4">Site Web</h6>
+                                <p class="col-6">Non renseigné</p>
+                            </div>
+                            <div class="row">
+                                <h6 class="col-4">Numéro</h6>
+                                <p class="col-6">Non renseigné</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Adresses</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-secondary">ADRESSE DEVIS (ADRESSE PAR DÉFAUT)</h6>
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="col-10">
+                                    <p>46, rue de la télématique</p>
+                                    <p>Le Polygone</p>
+                                    <p>42000 St-Etienne</p>
+                                    <p>France</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 class="text-secondary">ADRESSE FACTURE</h6>
+                            <div class="row">
+                                    <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div class="col-10">
+                                        <p>46, rue de la télématique</p>
+                                        <p>Le Polygone</p>
+                                        <p>42000 St-Etienne</p>
+                                        <p>France</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-right">
+                        <a href="vue-modif-client.html" class="btn btn-lg btn-outline-info">Modifier</a>
+                    </div>
+                </main>
+            </section>
+        </div>
+    </main>
+
+</body>
+
+</html>

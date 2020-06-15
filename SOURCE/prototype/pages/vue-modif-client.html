@@ -1,0 +1,275 @@
+<!-- 
+    Auteur: S.RABONARIJAONA
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- Utiliser la bibliothèque de style bootstrap v.4.0.0 -->
+    <link rel="stylesheet" href="../lib/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script src="../lib/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Utiliser les icon Solid de la librairie font awesome v.5.13.0 -->
+    <link href="../lib/fontawesome-5.13.0/css/solid.min.css" rel="stylesheet">
+    <link href="../lib/fontawesome-5.13.0/css/fontawesome.min.css" rel="stylesheet">
+    <script defer src="../lib/fontawesome-5.13.0/js/fontawesome.min.js"></script>
+    <script defer src="../lib/fontawesome-5.13.0/js/solid.min.js"></script>
+
+    <!-- Utiliser la librairie SplitJS v.1.5.11 pour gérer le redimenssionnement des panels -->
+    <script src="../lib/splitjs-1.5.11/split.min.js"></script>
+
+    <style>
+        form {
+            margin-top: 50px;
+        }
+
+        h5 {
+            padding: 20px 0px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #section-modif-client {
+            height: 600px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+
+        <nav class="navbar navbar-light bg-light justify-content-between">
+                <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="../index.html">Client</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Détail client</li>
+                        </ol>
+                        </nav>
+            <a class="navbar-brand">SOLOFO RABONARIJAONA</a>
+        </nav>
+
+    <main class="container-fluid">
+        <div class="row">
+            <nav class="col-3 position-static">
+                <div class="list-group">
+                    <a href="vue-fiche-client.html" class="list-group-item list-group-item-action active">
+                        Informations générales
+                    </a>
+                    <a href="vue-interlocuteur-client.html" class="list-group-item list-group-item-action">Interlocuteur</a>
+                    <a href="vue-comment-client.html" class="list-group-item list-group-item-action">Commentaire</a>
+
+                </div>
+            </nav>
+
+            <section class="col-9" id="section-modif-client">
+
+                <form>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-1">
+                            <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="prefixe" class="col-form-label col-2">Préfixe</label>
+                                <select class="form-control col-8" id="prefixe">
+                                    <option></option>
+                                    <option>M.</option>
+                                    <option>Mme</option>
+                                    <option>Mlle</option>
+                                    <option>M. et Mme</option>
+                                    <option>SA</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nom" class="col-form-label col-2">Nom*</label>
+                                <input type="text" class="form-control col-8" id="nom"
+                                    placeholder="SOLOFO RABONARIJAONA" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="categorie" class="col-form-label col-2">Catégorie</label>
+                                <div class="col-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="categprie" id="client"
+                                            value="client" checked>
+                                        <label class="form-check-label" for="client">
+                                            Client
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="categprie" id="prospect"
+                                            value="prospect">
+                                        <label class="form-check-label" for="prospect">
+                                            Prospect
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <label for="etat" class="col-form-label col-2">Etat</label>
+                                <select class="form-control col-8" id="etat">
+                                    <option>Actif</option>
+                                    <option>Inactif</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label for="code" class="col-form-label col-2">Code*</label>
+                                <input type="text" class="form-control col-8" id="code" placeholder="SRAB" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="code" class="col-form-label col-2">Statut</label>
+                                <select class="form-control col-8" id="etat">
+                                    <option>Particulier</option>
+                                    <option>Société</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Informations</h5>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="tel" class="col-form-label col-3">Tél.</label>
+                                <input type="tel" class="form-control col-8" id="tel" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="mobile-1" class="col-form-label col-3">Mobile 1</label>
+                                <input type="tel" class="form-control col-8" id="mobile-1" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="mobile-2" class="col-form-label col-3">Mobile 2</label>
+                                <input type="tel" class="form-control col-8" id="mobile-2" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="fax" class="col-form-label col-3">Fax</label>
+                                <input type="tel" class="form-control col-8" id="fax" />
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-4">Type de client</label>
+                                <select class="form-control col-6" id="type-de-client">
+                                    <option></option>
+                                    <option>Administration</option>
+                                    <option>Architecte</option>
+                                    <option>Commerçant</option>
+                                    <option>Conseil</option>
+                                    <option>Education nationale</option>
+                                    <option>Hôtelier</option>
+                                    <option>Industriel</option>
+                                    <option>Mairie</option>
+                                    <option>Particulier</option>
+                                    <option>Promoteur</option>
+                                    <option>Régie d'immeuble</option>
+                                    <option>Restaurant</option>
+                                    <option>Société</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-form-label col-4">Email</label>
+                                <input type="email" class="form-control col-6" id="email" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="web" class="col-form-label col-4">Site Web</label>
+                                <input type="text" class="form-control col-6" id="web" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="numero" class="col-form-label col-4">Numéro</label>
+                                <input type="text" class="form-control col-6" id="numero" />
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Adresses</h5>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <h6 class="text-secondary">ADRESSE DEVIS (ADRESSE PAR DÉFAUT)</h6>
+                            <div class="form-group row">
+                                <label for="addresse-1" class="col-form-label col-3">Adresse 1</label>
+                                <input type="text" class="form-control col-8" id="addresse-1"
+                                    placeholder="46 rue de la télématique" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="addresse-2" class="col-form-label col-3">Adresse 2</label>
+                                <input type="text" class="form-control col-8" id="addresse-2"
+                                    placeholder="Le Polygone" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="addresse-3" class="col-form-label col-3">Adresse 3</label>
+                                <input type="text" class="form-control col-8" id="addresse-3" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="code-postal" class="col-form-label col-3">Code postal</label>
+                                <input type="text" class="form-control col-8" id="code-postal" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="ville" class="col-form-label col-3">Ville</label>
+                                <input type="text" class="form-control col-8" id="ville" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                                <select class="form-control col-8" id="type-de-client">
+                                    <option></option>
+                                    <option>France</option>
+                                    <option>Espagne</option>
+                                    <option>Italie</option>
+                                    <option>Portugal</option>
+                                    <option>Royaume-Uni</option>
+                                    <option>Suisse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 class="text-secondary">ADRESSE FACTURE</h6>
+                            <div class="form-group row">
+                                <label for="addresse-1" class="col-form-label col-3">Adresse 1</label>
+                                <input type="text" class="form-control col-8" id="addresse-1"
+                                    placeholder="46 rue de la télématique" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="addresse-2" class="col-form-label col-3">Adresse 2</label>
+                                <input type="text" class="form-control col-8" id="addresse-2"
+                                    placeholder="Le Polygone" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="addresse-3" class="col-form-label col-3">Adresse 3</label>
+                                <input type="text" class="form-control col-8" id="addresse-3" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="code-postal" class="col-form-label col-3">Code postal</label>
+                                <input type="text" class="form-control col-8" id="code-postal" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="ville" class="col-form-label col-3">Ville</label>
+                                <input type="text" class="form-control col-8" id="ville" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                                <select class="form-control col-8" id="type-de-client">
+                                    <option></option>
+                                    <option>France</option>
+                                    <option>Espagne</option>
+                                    <option>Italie</option>
+                                    <option>Portugal</option>
+                                    <option>Royaume-Uni</option>
+                                    <option>Suisse</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-right">
+                        <a href="vue-fiche-client.html" class="btn btn-lg btn-outline-info">Valider</a>
+                        <a href="vue-fiche-client.html" class="btn btn-lg btn-outline-info">Annuler</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+</body>
+
+</html>
