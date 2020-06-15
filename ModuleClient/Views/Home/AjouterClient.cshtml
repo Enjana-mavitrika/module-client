@@ -1,0 +1,268 @@
+﻿@model ModuleClient.Models.Client
+
+@{
+    Layout = null;
+}
+
+<!--
+    Auteur: S.RABONARIJAONA
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/lib/bootstrap-4.0.0/bootstrap.min.css")
+    @Styles.Render("~/Content/lib/fontawesome-5.13.0/fontawesome.min.css")
+    @Styles.Render("~/Content/lib/fontawesome-5.13.0/solid.min.css")
+    @Styles.Render("~/Content/Client/custom.css")
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../index.html">Client</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ajout client</li>
+            </ol>
+        </nav>
+        <a class="navbar-brand">AJOUTER UN NOUVEAU CLIENT</a>
+    </nav>
+
+    <main class="container-fluid">
+        <div class="row">
+            <nav class="col-3 position-static">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active disabled" role="button" aria-disabled="true">
+                        Informations générales
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action disabled" role="button" aria-disabled="true">Interlocuteur</a>
+                    <a href="#" class="list-group-item list-group-item-action disabled" role="button" aria-disabled="true">Commentaire</a>
+
+                </div>
+            </nav>
+
+            <section class="col-9" id="section-modif-client">
+
+                @Model.Prefixe
+                @Model.Nom
+                @Model.Categorie
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-row">
+                        <div class="col-md-1">
+                            <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="Prefixe" class="col-form-label col-2">Préfixe</label>
+                                <select asp-for="Prefixe" name="Prefixe" class="form-control col-8">
+                                    <option value=""></option>
+                                    <option value="M." selected>M.</option>
+                                    <option value="Mme">Mme</option>
+                                    <option value="Mlle">Mlle</option>
+                                    <option value="M. et Mme">M. et Mme</option>
+                                    <option value="SA">SA</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "col-form-label col-2" })
+                                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control col-8" , required="required"} })
+                                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="categorie" class="col-form-label col-2">Catégorie</label>
+                                <div class="col-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Categorie" name="Categorie"
+                                               value="Client" checked>
+                                        <label class="form-check-label" for="client">
+                                            Client
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Categorie" id="prospect" name="Categorie"
+                                               value="Prospect">
+                                        <label class="form-check-label" for="prospect">
+                                            Prospect
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <label for="etat" class="col-form-label col-2">Etat</label>
+                                <select class="form-control col-8" id="etat" name="Etat" asp-for="Etat">
+                                    <option value="Actif">Actif</option>
+                                    <option value="Inactif">Inactif</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "col-form-label col-2" })
+                                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control col-8", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row">
+                                <label for="code" class="col-form-label col-2">Statut</label>
+                                <select class="form-control col-8" id="Statut" asp-for="Statut" name="Statut">
+                                    <option value="Particulier">Particulier</option>
+                                    <option value="Société">Société</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Informations</h5>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="tel" class="col-form-label col-3">Tél.</label>
+                                <input type="tel" class="form-control col-8" id="tel" asp-for="Tel" name="Tel" value="@Model.Tel" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="mobile-1" class="col-form-label col-3">Mobile 1</label>
+                                <input type="tel" class="form-control col-8" id="mobile-1" asp-for="Mobile_1" name="Mobile_1" value="@Model.Mobile_1" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="mobile-2" class="col-form-label col-3">Mobile 2</label>
+                                <input type="tel" class="form-control col-8" id="mobile-2" asp-for="Mobile_2" name="Mobile_2" value="@Model.Mobile_2" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="fax" class="col-form-label col-3">Fax</label>
+                                <input type="tel" class="form-control col-8" id="fax" asp-for="Fax" name="Fax" value="@Model.Fax" />
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-4">Type de client</label>
+                                <select class="form-control col-6" id="type-de-client" asp-for="Type" name="Type">
+                                    <option value=""></option>
+                                    <option value="Administration">Administration</option>
+                                    <option value="Architecte">Architecte</option>
+                                    <option value="Commerçant">Commerçant</option>
+                                    <option value="Conseil">Conseil</option>
+                                    <option value="Education nationale">Education nationale</option>
+                                    <option value="Hôtelier">Hôtelier</option>
+                                    <option value="Industriel">Industriel</option>
+                                    <option value="Mairie">Mairie</option>
+                                    <option value="Particulier">Particulier</option>
+                                    <option value="Promoteur">Promoteur</option>
+                                    <option value="Régie d'immeuble">Régie d'immeuble</option>
+                                    <option value="Restaurant">Restaurant</option>
+                                    <option value="Société">Société</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-form-label col-4" })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-6" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Site, htmlAttributes: new { @class = "col-form-label col-4" })
+                                @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control col-6" } })
+                                @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "col-form-label col-4" })
+                                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control col-6" } })
+                                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="bg-light">Adresses</h5>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <h6 class="text-secondary">ADRESSE DEVIS (ADRESSE PAR DÉFAUT)</h6>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseDevis.Adresse_1, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.Adresse_1, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseDevis.Adresse_2, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.Adresse_2, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseDevis.Adresse_3, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.Adresse_3, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseDevis.CodePostal, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.CodePostal, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseDevis.Ville, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.Ville, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                                <select class="form-control col-8" id="type-de-client" asp-for="AdresseDevis.Pays" name="AdresseDevis.Pays">
+                                    <option></option>
+                                    <option>France</option>
+                                    <option>Espagne</option>
+                                    <option>Italie</option>
+                                    <option>Portugal</option>
+                                    <option>Royaume-Uni</option>
+                                    <option>Suisse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 class="text-secondary">ADRESSE FACTURE</h6>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseFacture.Adresse_1, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseFacture.Adresse_1, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseFacture.Adresse_2, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseFacture.Adresse_2, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseFacture.Adresse_3, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseFacture.Adresse_3, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseFacture.CodePostal, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseDevis.CodePostal, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.AdresseFacture.Ville, htmlAttributes: new { @class = "col-form-label col-3" })
+                                @Html.EditorFor(model => model.AdresseFacture.Ville, new { htmlAttributes = new { @class = "form-control col-8" } })
+                            </div>
+                            <div class="form-group row">
+                                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                                <select class="form-control col-8" id="type-de-client" asp-for="AdresseFacture.Pays" name="AdresseFacture.Pays">
+                                    <option></option>
+                                    <option>France</option>
+                                    <option>Espagne</option>
+                                    <option>Italie</option>
+                                    <option>Portugal</option>
+                                    <option>Royaume-Uni</option>
+                                    <option>Suisse</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="text-right">
+                        <input class="btn btn-lg btn-outline-info" type="submit" value="Valider" />
+                        @Html.ActionLink("Annuler", "Index", "Home", new { area = "" }, new { @class = "btn btn-lg btn-outline-info" })
+                    </div>
+                }
+                </section>
+        </div>
+    </main>
+
+
+    @Scripts.Render("~/Scripts/lib/fontawesome-5.13.0/fontawesome.min.js")
+    @Scripts.Render("~/Scripts/lib/fontawesome-5.13.0/solid.min.js")
+</body>
+
+</html>

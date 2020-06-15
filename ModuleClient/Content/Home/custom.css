@@ -1,0 +1,60 @@
+﻿/* Personnaliser le style des éléments générer par Datatables.js */
+#liste-client_filter label {
+    width: 80% !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    flex-direction: row-reverse;
+}
+
+    #liste-client_filter label i {
+        width: 10% !important;
+    }
+
+    #liste-client_filter label input {
+        width: 80% !important;
+    }
+
+/* style du tableaux */
+#liste-client {
+    margin-top: 20px !important;
+}
+
+#section-list-client {
+    max-height: 700px !important;
+    overflow-y: scroll !important;
+    overflow-x: auto;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-top: 15px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('../lib/fontawesome-5.13.0/svgs/solid/grip-vertical.svg');
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    cursor: ew-resize;
+    z-index: 10000;
+}
+
+.card {
+    min-height: 500px !important;
+}
+
+#pas-de-selection {
+    margin-top: 20px;
+}
+
+tr:hover {
+    cursor: pointer;
+}

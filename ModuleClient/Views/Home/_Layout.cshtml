@@ -1,0 +1,50 @@
+﻿<!--
+    Auteur: S.RABONARIJAONA
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/lib/bootstrap-4.0.0/bootstrap.min.css")
+    @Styles.Render("~/Content/lib/fontawesome-5.13.0/fontawesome.min.css")
+    @Styles.Render("~/Content/lib/fontawesome-5.13.0/solid.min.css")
+    @Styles.Render("~/Content/lib/micromodal-1.0.0/micromodal.css")
+    @Styles.Render("~/Content/lib/DataTables-1.10.21/datatables.min.css")
+    @Styles.Render("~/Content/lib/loadSpinner/loadspinner.css")
+    @Styles.Render("~/Content/Home/custom.css")
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            @Html.ActionLink("CLIENTS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <a class="btn btn-outline-secondary" href="@Url.Action("AjouterClient", "Home")">
+                <i class="fas fa-plus"></i> Ajouter un client
+            </a>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+
+    @Scripts.Render("~/Scripts/lib/splitjs-1.5.11/split.min.js")
+    @Scripts.Render("~/Scripts/lib/jquery-3.5.1/jquery.min.js")
+    @Scripts.Render("~/Scripts/lib/DataTables-1.10.21/datatables.min.js")
+    @Scripts.Render("~/Scripts/lib/micromodal-1.0.0/micromodal.min.js")
+    @Scripts.Render("~/Scripts/lib/fontawesome-5.13.0/fontawesome.min.js")
+    @Scripts.Render("~/Scripts/lib/fontawesome-5.13.0/solid.min.js")
+
+    @Scripts.Render("~/Scripts/Home/config.js")
+
+    @Scripts.Render("~/Scripts/lib/mustache-4.0.1/mustache.min.js")
+    @Scripts.Render("~/Scripts/app/client.service.js")
+    @Scripts.Render("~/Scripts/app/liste-client.component.js")
+
+</body>
+
+</html>

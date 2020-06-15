@@ -1,0 +1,196 @@
+﻿<main class="container-fluid">
+    <div class="flex">
+        <section id="section-list-client">
+
+            @if (TempData["AjoutClientSuccess"] != null)
+            {
+                <div class="alert alert-success" id="notif-ajout">@TempData["AjoutClientSuccess"]</div>
+            }
+            <script id="template-notif-suppression" type="x-tmpl-mustache">
+                {{#success}}
+                <div class="alert alert-success">Le client a été supprimé avec succés !</div>
+                {{/success}}
+                {{#fail}}
+                <div class="alert alert-danger">Erreur lors de la suppression du client !</div>
+                {{/fail}}
+                {{#enCours}}
+                <div class="alert alert-warning">Suppression en cours...</div>
+                {{/enCours}}
+            </script>
+            <div id="notif-suppression"></div>
+
+            <script id="template-clients" type="x-tmpl-mustache">
+                {{^success}}
+                <div class="alert alert-danger">Un erreur serveur est survenus !</div>
+                {{/success}}
+                <table class="table table-hover table-responsive-md" id="liste-client">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Catégorie</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Code postal</th>
+                            <th scope="col">Ville</th>
+                            <th scope="col">Solde</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#clients}}
+                        <tr onclick="listeClientComponent.onSelectClient(this.id)" id="client-{{Id}}" class="client">
+                            <td><span class="badge badge-{{#isCategorieClient}}success{{/isCategorieClient}}{{^isCategorieClient}}info{{/isCategorieClient}}">{{ Categorie }}</span></td>
+                            <td>{{ Code }}</td>
+                            <td {{#isInactif}} class="text-danger" {{/isInactif}}>{{ Nom }}</td>
+                            <td>{{ AdresseDevis.CodePostal }}</td>
+                            <td>{{ AdresseDevis.Ville }}</td>
+                            <td class="text-right {{#isSoldeNegatif}}text-danger{{/isSoldeNegatif}}">{{ Solde }} &euro;</td>
+                        </tr>
+                        {{/clients}}
+
+                    </tbody>
+                </table>
+            </script>
+            <div id="clients">
+                <!-- Loading Spinner Wrapper-->
+                <div class="loader text-center">
+                    <div class="loader-inner">
+
+                        <!-- Animated Spinner -->
+                        <div class="lds-roller mb-3">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <!-- Spinner Description Text [For Demo Purpose]-->
+                        <h4 class="text-uppercase font-weight-bold">Chargement</h4>
+                        <p class="font-italic text-muted">Veuillez patienter pendant la récupération des Clients</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="section-details-client">
+            <div class="card bg-light">
+                <div class="card-header bg-dark text-white">DETAILS</div>
+
+                <script id="template-apercu-client" type="x-tmpl-mustache">
+                    {{#client}}
+                    <div class="card-body text-left">
+                        <h5>
+                            <i class="fas fa-user-circle"></i> {{ client.Prefixe }} {{ client.Nom }}
+                        </h5>
+                        <ul>
+                            <li>{{ client.Statut }}</li>
+                            <li>{{ client.Type }}</li>
+                            <li>
+                                <ul>
+                                    {{#client.Tel}}
+                                    <li><i class="fas fa-phone-alt"></i> {{ client.Tel }}</li>
+                                    {{/client.Tel}}
+                                    {{#client.Mobile_1}}
+                                    <li><i class="fas fa-mobile-alt"></i> {{ client.Mobile_1 }}</li>
+                                    {{/client.Mobile_1}}
+                                    {{#client.Mobile_2}}
+                                    <li><i class="fas fa-mobile-alt"></i> {{ client.Mobile_2 }}</li>
+                                    {{/client.Mobile_2}}
+                                    {{#client.Fax}}
+                                    <li><i class="fas fa-print"></i> {{client.Fax}}</li>
+                                    {{/client.Fax}}
+                                    <li>
+                                        <i class="fas fa-envelope"></i> <a href="mailto:{{client.Email}}">{{ client.Email }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <hr />
+                        <h5>
+                            ADRESSE DEVIS
+                        </h5>
+                        <div class="row">
+                            <div class="col-3 text-right"><i class="fas fa-map-marker-alt"></i></div>
+                            <ul class="col-9">
+                                {{#client.AdresseDevis.Adresse_1}}
+                                <li>{{client.AdresseDevis.Adresse_1}}</li>
+                                {{/client.AdresseDevis.Adresse_1}}
+                                {{#client.AdresseDevis.Adresse_2}}
+                                <li>{{client.AdresseDevis.Adresse_2}}</li>
+                                {{/client.AdresseDevis.Adresse_2}}
+                                <li>{{client.AdresseDevis.CodePostal}} {{client.AdresseDevis.Ville}}</li>
+                                <li>{{client.AdresseDevis.Pays}}</li>
+                            </ul>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-5">
+                                <a class="btn btn-primary disabled" href="#">En savoir plus</a>
+                            </div>
+                            <div class="col-5">
+                                <a class="btn btn-primary disabled" href="#">Modifier</a>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-danger" data-custom-open="modal-1">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted bg-secondary">
+                        <div class="row text-white">
+                            <div class="col-8"><i class="fas fa-tag"></i> Solde</div>
+                            <div class="col-4 text-right">{{client.Solde}} &euro;</div>
+                        </div>
+                    </div>
+                    {{/client}}
+
+                    {{^client}}
+                    <div class="text-center card-body">
+                        <i class="fas fa-user-alt-slash" style="font-size:50px;opacity: 0.7;"></i>
+                        <p class="card-text">Aucun client sélectionné</p>
+                    </div>
+                    {{/client}}
+
+                </script>
+
+                <div id="apercu-client" class="text-center card-body">
+                    <i class="fas fa-user-alt-slash" style="font-size:50px;opacity: 0.7;"></i>
+                    <p class="card-text">Aucun client sélectionné</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- MODALS -->
+<script id="template-delete-client-modal" type="x-tmpl-mustache">
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-1-title">
+                    <i class="fas fa-trash-alt"></i> Suppression d'un client
+                </h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close
+                        data-custom-close="modal-1"></button>
+            </header>
+            <main class="modal__content" id="modal-1-content">
+                <p>
+                    Êtes-vous sûr de vouloir supprimer le client <code>{{client.Code}} - {{client.Nom}}</code>
+                </p>
+            </main>
+            <footer class="modal__footer">
+                <button class="btn btn-danger" onclick="listeClientComponent.onConfirmDeleteClient()">Oui, supprimer</button>
+                <button data-custom-close="modal-1" class="btn btn-secondary" data-micromodal-close
+                        aria-label="Close this dialog window">
+                    Annuler
+                </button>
+            </footer>
+        </div>
+    </div>
+</div>
+</script>
+<div id="delete-client-modal"></div>
+
