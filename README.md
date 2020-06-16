@@ -33,7 +33,8 @@ Auteur : _SOLOFO RABONARIJAONA_
 
 ## Historique des fonctionnalités implémentés (dynamique)
 ### 15/06/2020
-  * Affichage de la liste des clients :heavy_check_mark:
+  * Affichage de la liste des clients dans un tableau :heavy_check_mark:
+  * Recherche et Tri des clients dans le tableau :heavy_check_mark:
   * Affichage des détails sur un client sélectionné en aperçu :heavy_check_mark:
   * Suppression d'un client sélectionné :heavy_check_mark:
   * Ajout d'un nouveau client :heavy_check_mark:
