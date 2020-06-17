@@ -3,10 +3,24 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Adresses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Adresse_1 = c.String(),
+                        Adresse_2 = c.String(),
+                        Adresse_3 = c.String(),
+                        CodePostal = c.String(),
+                        Ville = c.String(),
+                        Pays = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Clients",
                 c => new
@@ -38,20 +52,6 @@
                 .Index(t => t.AdresseFacture_Id);
             
             CreateTable(
-                "dbo.Adresses",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Adresse_1 = c.String(),
-                        Adresse_2 = c.String(),
-                        Adresse_3 = c.String(),
-                        CodePostal = c.String(),
-                        Ville = c.String(),
-                        Pays = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Interlocuteurs",
                 c => new
                     {
@@ -78,8 +78,8 @@
             DropIndex("dbo.Clients", new[] { "AdresseFacture_Id" });
             DropIndex("dbo.Clients", new[] { "AdresseDevis_Id" });
             DropTable("dbo.Interlocuteurs");
-            DropTable("dbo.Adresses");
             DropTable("dbo.Clients");
+            DropTable("dbo.Adresses");
         }
     }
 }
