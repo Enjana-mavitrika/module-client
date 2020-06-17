@@ -26,6 +26,7 @@ namespace ModuleClient.Models
         public string Code { get; set; }
         public string Statut { get; set; }
         [Phone]
+        [Display(Name = "Tél")]
         public string Tel { get; set; }
         [Phone]
         [Display(Name = "Mobile 1")]

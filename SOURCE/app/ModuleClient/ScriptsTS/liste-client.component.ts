@@ -1,4 +1,9 @@
-﻿// déclaration librairie externe Mustache-v.4.0.1
+﻿/**
+ * @author S.RABONARIJAONA
+ * @version 1.0.0
+ */
+
+// déclaration librairie externe Mustache-v.4.0.1
 declare class Mustache {
     static render(template: string, object: any): string;
 }
@@ -10,6 +15,7 @@ declare function configurerDataTables();
 declare function initMicromodal();
 declare function closeModal(id: string);
 
+/** Composant qui gère l'affichage de la liste des clients sur la page d'index */
 class ListeClientComponent {
 
     timeout: number = 2000;

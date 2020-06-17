@@ -21,7 +21,7 @@ namespace ModuleClient.Controllers
         // GET: api/Client
         public IQueryable<Client> GetClients()
         {
-            return db.Clients;
+            return db.Clients.OrderByDescending(c => c.Id);
         }
 
         // GET: api/Client/5

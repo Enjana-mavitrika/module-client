@@ -90,8 +90,11 @@ class Adresse {
 class ClientService {
 
     static listeClient: Array<Client> = [];
+    static client: Client;
     static urlGetListClientAPI: string = "/api/Client";
     static urlDeleteClientAPI: string = "/api/Client";
+    static urlGetClientAPI: string = "/api/Client";
+    static urlPutClientAPI: string = "/api/Client";
 
     /**
      * Méthode qui récupère la liste des clients dans la base via l'API Client
@@ -108,12 +111,31 @@ class ClientService {
     static deleteClient(id: number): Promise<any> {
         return fetch(`${this.urlDeleteClientAPI}/${id}`, { method: 'DELETE' }).then((response) => response.json());
     }
-
+    
     /**
      * Retirer de la liste un client
      * @param id : Id du client à retirer
      */
     static retirerClient(id: number) {
         this.listeClient = this.listeClient.filter((client) => client.Id != id);
+    }
+
+    /**
+     * Méthode qui récupère le client dans la base via l'API Client
+     * @param id : Id du client à récuperer
+     */
+    static getClient(id: number): Promise<any> {
+        return fetch(`${this.urlGetClientAPI}/${id}`).then((response) => response.json());
+    }
+
+    static putClient(): Promise<any> {
+        return fetch(`${this.urlPutClientAPI}/${this.client.Id}`, {
+            method: "PUT",
+            body: JSON.stringify(this.client),
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "same-origin"
+        });
     }
 }

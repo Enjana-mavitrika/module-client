@@ -100,9 +100,11 @@
                                     {{#client.Fax}}
                                     <li><i class="fas fa-print"></i> {{client.Fax}}</li>
                                     {{/client.Fax}}
+                                    {{#client.Email}}
                                     <li>
                                         <i class="fas fa-envelope"></i> <a href="mailto:{{client.Email}}">{{ client.Email }}</a>
                                     </li>
+                                    {{/client.Email}}
                                 </ul>
                             </li>
                         </ul>
@@ -126,10 +128,10 @@
                         <hr />
                         <div class="row">
                             <div class="col-5">
-                                <a class="btn btn-primary disabled" href="#">En savoir plus</a>
+                                <a class="btn btn-primary" href="@Url.Action("DetailsClient", "Home")/{{client.Id}}/Affichage">En savoir plus</a>
                             </div>
                             <div class="col-5">
-                                <a class="btn btn-primary disabled" href="#">Modifier</a>
+                                <a class="btn btn-primary" href="@Url.Action("DetailsClient", "Home")/{{client.Id}}/Modification">Modifier</a>
                             </div>
                             <div class="col-2">
                                 <button class="btn btn-danger" data-custom-open="modal-1">

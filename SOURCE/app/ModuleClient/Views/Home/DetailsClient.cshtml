@@ -1,0 +1,121 @@
+﻿@model ModuleClient.Models.Client
+
+@{
+    ViewBag.Title = "DetailsClient";
+    Layout = "~/Views/Home/_LayoutClient.cshtml";
+}
+
+<section class="col-9" id="section-details-client" data-mode="@ViewBag.Mode" data-idClient="@Model.Id">
+
+    <script id="template-informations-general" type="x-tmpl-mustache">
+
+
+        {{#estModeModification}}
+        @Html.Partial("_PartialClientForm")
+        {{/estModeModification}}
+
+
+        <!-- MODE AFFICHAGE -->
+        {{#estModeAffichage}}
+        @Html.Partial("_PartialFicheClient")
+        {{/estModeAffichage}}
+
+
+        <!-- MODE AFFICHAGE INTERLOCUTEURS  -->
+        {{#estModeAffichageListeInterlocuteur}}
+        <table class="table table-hover table-responsive-md">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Fonction</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Téléphone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ModuleClient.Models.Interlocuteur inter in Model.Interlocuteurs)
+                {
+                    <tr>
+                        <td>@inter.Prenom</td>
+                        <td>@inter.Nom</td>
+                        <td>@inter.Fonction</td>
+                        <td>@inter.Service</td>
+                        <td>@inter.Telephone</td>
+                    </tr>
+                }
+                @if (Model.Interlocuteurs.Count == 0)
+                {
+                    <tr class="text-center">
+                        <td colspan="5">Aucun Interlocuteur</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        {{/estModeAffichageListeInterlocuteur}}
+
+        {{#estModeAffichageCommentaire}}
+        <h5 class="bg-light">Commentaire</h5>
+        <div class="comment">
+            <textarea id="area_editor"></textarea>
+        </div>
+        <hr />
+        <p class="text-right">
+            <button type="button" class="btn btn-lg btn-outline-info" id="btn-valider-commentaire">Valider</button>
+            <button type="button" class="btn btn-lg btn-outline-info" id="btn-modifier-commentaire">Modifier</button>
+        </p>
+        {{/estModeAffichageCommentaire}}
+
+        {{#estEnCours}}
+        <!-- Loading Spinner Wrapper-->
+        <div class="loader text-center">
+            <div class="loader-inner">
+
+                <!-- Animated Spinner -->
+                <div class="lds-roller mb-3">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <!-- Spinner Description Text [For Demo Purpose]-->
+                <h4 class="text-uppercase font-weight-bold">Chargement</h4>
+                <p class="font-italic text-muted">Veuillez patienter pendant la mise à jour du Client</p>
+            </div>
+        </div>
+        {{/estEnCours}}
+
+        {{#erreur}}
+        <div class="alert alert-danger">Echec de la mise à jour du client !</div>
+        {{/erreur}}
+    </script>
+    <div id="informations-general">
+        <!-- Loading Spinner Wrapper-->
+        <div class="loader text-center">
+            <div class="loader-inner">
+
+                <!-- Animated Spinner -->
+                <div class="lds-roller mb-3">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <!-- Spinner Description Text [For Demo Purpose]-->
+                <h4 class="text-uppercase font-weight-bold">Chargement</h4>
+                <p class="font-italic text-muted">Veuillez patienter pendant la récupération des données du Client : @Model.Nom</p>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,177 @@
+﻿@model ModuleClient.Models.Client
+<main>
+    <div class="row">
+        <div class="col-md-1">
+            <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <h6 class="col-2">Nom</h6>
+                <p class="col-8" id="nom">@Model.Nom</p>
+            </div>
+            <div class="row">
+                <h6 class="col-2">Catégorie</h6>
+                <p class="col-8"><span class="badge @if (Model.Categorie == "Client") { <text>badge-success</text> } else { <text>badge-info</text> } ">@Model.Categorie</span></p>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <h6 class="col-2">Etat</h6>
+                <p class="col-8">
+                    @if (Model.Etat != null)
+                    {@Model.Etat }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-2">Code</h6>
+                <p class="col-8">
+                    @if (Model.Code != null)
+                    {@Model.Code }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-2">Statut</h6>
+                <p class="col-8">
+                    @if (Model.Statut != null)
+                    {@Model.Statut }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+        </div>
+    </div>
+    <h5 class="bg-light">Informations</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <h6 class="col-3">Tél.</h6>
+                <p class="col-8">
+                    @if (Model.Tel != null)
+                    {@Model.Tel }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-3">Mobile 1</h6>
+                <p class="col-8">
+                    @if (Model.Mobile_1 != null)
+                    {@Model.Mobile_1 }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-3">Mobile 2</h6>
+                <p class="col-8">
+                    @if (Model.Mobile_2 != null)
+                    {@Model.Mobile_2 }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="form-group row">
+                <h6 class="col-3">Fax</h6>
+                <p class="col-8">
+                    @if (Model.Fax != null)
+                    {@Model.Fax }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <h6 class="col-4">Type de client</h6>
+                <p class="col-6">
+                    @if (Model.Type != null)
+                    {@Model.Type }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-4">Email</h6>
+                <p class="col-6">
+                    @if (Model.Email != null)
+                    {<a href="mailto:@Model.Email">@Model.Email</a> }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-4">Site Web</h6>
+                <p class="col-6">
+                    @if (Model.Site != null)
+                    {<a href="@Model.Site">@Model.Site</a> }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+            <div class="row">
+                <h6 class="col-4">Numéro</h6>
+                <p class="col-6">
+                    @if (Model.Numero != null)
+                    {@Model.Numero }
+                else
+                { <text>--non renseigné--</text>}
+                </p>
+            </div>
+        </div>
+    </div>
+    <h5 class="bg-light">Adresses</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <h6 class="text-secondary">ADRESSE DEVIS (ADRESSE PAR DÉFAUT)</h6>
+            <div class="row">
+                <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="col-10">
+                    @if (Model.AdresseDevis != null && Model.AdresseDevis.Adresse_1 != null)
+                    {<p>@Model.AdresseDevis.Adresse_1</p>}
+                    @if (Model.AdresseDevis != null && Model.AdresseDevis.Adresse_2 != null)
+                    {<p>@Model.AdresseDevis.Adresse_2</p>}
+                    @if (Model.AdresseDevis != null && Model.AdresseDevis.Adresse_3 != null)
+                    {<p>@Model.AdresseDevis.Adresse_3</p>}
+                    @if (Model.AdresseDevis != null)
+                    {<p>
+                            @if (Model.AdresseDevis.CodePostal != null)
+                            {@Model.AdresseDevis.CodePostal} @if (Model.AdresseDevis.Ville != null)
+                            {@Model.AdresseDevis.Ville}
+                        </p>}
+                    @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null)
+                    {<p>@Model.AdresseDevis.Pays</p>}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h6 class="text-secondary">ADRESSE FACTURE</h6>
+            <div class="row">
+                <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="col-10">
+                    @if (Model.AdresseFacture != null && Model.AdresseFacture.Adresse_1 != null)
+                    {<p>@Model.AdresseFacture.Adresse_1</p>}
+                    @if (Model.AdresseFacture != null && Model.AdresseFacture.Adresse_2 != null)
+                    {<p>@Model.AdresseFacture.Adresse_2</p>}
+                    @if (Model.AdresseFacture != null && Model.AdresseFacture.Adresse_3 != null)
+                    {<p>@Model.AdresseFacture.Adresse_3</p>}
+                    @if (Model.AdresseFacture != null)
+                    {<p>
+                            @if (Model.AdresseFacture.CodePostal != null)
+                            {@Model.AdresseFacture.CodePostal} @if (Model.AdresseFacture.Ville != null)
+                            {@Model.AdresseFacture.Ville}
+                        </p>}
+                    @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null)
+                    {<p>@Model.AdresseFacture.Pays</p>}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="text-right">
+        <a href="@Url.Action("DetailsClient", "Home", new { id = @Model.Id, mode = "Modification" })" class="btn btn-lg btn-outline-info">Modifier</a>
+    </div>
+</main>

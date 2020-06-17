@@ -1,0 +1,211 @@
+﻿@model ModuleClient.Models.Client
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-row">
+        <div class="col-md-1">
+            <i class="fas fa-user-circle" style="font-size: 50px;"></i>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label for="Prefixe" class="col-form-label col-2">Préfixe</label>
+                <select asp-for="Prefixe" name="Prefixe" class="form-control col-8" value="@Model.Prefixe">
+                    <option value=""></option>
+                    <option value="M." @if (Model.Prefixe != null && Model.Prefixe == "M.") { <text> selected </text> }>M.</option>
+                    <option value="Mme" @if (Model.Prefixe != null && Model.Prefixe == "Mme") { <text> selected </text> }>Mme</option>
+                    <option value="Mlle" @if (Model.Prefixe != null && Model.Prefixe == "Mlle") { <text> selected </text> }>Mlle</option>
+                    <option value="M. et Mme" @if (Model.Prefixe != null && Model.Prefixe == "M. et Mme") { <text> selected </text> }>M. et Mme</option>
+                    <option value="SA" @if (Model.Prefixe != null && Model.Prefixe == "SA") { <text> selected </text> }>SA</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "col-form-label col-2" })
+                @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control col-8", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group row">
+                <label for="categorie" class="col-form-label col-2">Catégorie</label>
+                <div class="col-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Categorie" id="client" name="Categorie"
+                               value="Client" @if (Model.Categorie != null && Model.Categorie == "Client") { <text> checked </text> }>
+                        <label class="form-check-label" for="client">
+                            Client
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Categorie" id="prospect" name="Categorie"
+                               value="Prospect" @if (Model.Categorie != null && Model.Categorie == "Prospect") { <text> checked </text> }>
+                        <label class="form-check-label" for="prospect">
+                            Prospect
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="etat" class="col-form-label col-2">Etat</label>
+                <select class="form-control col-8" id="etat" name="Etat" asp-for="Etat">
+                    <option value="Actif" @if (Model.Etat != null && Model.Etat == "Actif") { <text> selected </text> }>Actif</option>
+                    <option value="Inactif" @if (Model.Etat != null && Model.Etat == "Inactif") { <text> selected </text> }>Inactif</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "col-form-label col-2" })
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control col-8", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                <label for="code" class="col-form-label col-2">Statut</label>
+                <select class="form-control col-8" id="Statut" asp-for="Statut" name="Statut">
+                    <option value="Particulier" @if (Model.Statut != null && Model.Statut == "Particulier") { <text> selected </text> }>Particulier</option>
+                    <option value="Société" @if (Model.Statut != null && Model.Statut == "Société") { <text> selected </text> }>Société</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <h5 class="bg-light">Informations</h5>
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control col-8" } })
+                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Mobile_1, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.Mobile_1, new { htmlAttributes = new { @class = "form-control col-8" } })
+                @Html.ValidationMessageFor(model => model.Mobile_1, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Mobile_2, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.Mobile_2, new { htmlAttributes = new { @class = "form-control col-8" } })
+                @Html.ValidationMessageFor(model => model.Mobile_2, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control col-8" } })
+                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="type-de-client" class="col-form-label col-4">Type de client</label>
+                <select class="form-control col-6" id="type-de-client" asp-for="Type" name="Type">
+                    <option value=""></option>
+                    <option value="Administration" @if (Model.Type != null && Model.Type == "Administration") { <text> selected </text> }>Administration</option>
+                    <option value="Architecte" @if (Model.Type != null && Model.Type == "Architecte") { <text> selected </text> }>Architecte</option>
+                    <option value="Commerçant" @if (Model.Type != null && Model.Type == "Commerçant") { <text> selected </text> }>Commerçant</option>
+                    <option value="Conseil" @if (Model.Type != null && Model.Type == "Conseil") { <text> selected </text> }>Conseil</option>
+                    <option value="Education nationale" @if (Model.Type != null && Model.Type == "Education nationale") { <text> selected </text> }>Education nationale</option>
+                    <option value="Hôtelier" @if (Model.Type != null && Model.Type == "Hôtelier") { <text> selected </text> }>Hôtelier</option>
+                    <option value="Industriel" @if (Model.Type != null && Model.Type == "Industriel") { <text> selected </text> }>Industriel</option>
+                    <option value="Mairie" @if (Model.Type != null && Model.Type == "Mairie") { <text> selected </text> }>Mairie</option>
+                    <option value="Particulier" @if (Model.Type != null && Model.Type == "Particulier") { <text> selected </text> }>Particulier</option>
+                    <option value="Promoteur" @if (Model.Type != null && Model.Type == "Promoteur") { <text> selected </text> }>Promoteur</option>
+                    <option value="Régie d'immeuble" @if (Model.Type != null && Model.Type == "Régie d'immeuble") { <text> selected </text> }>Régie d'immeuble</option>
+                    <option value="Restaurant" @if (Model.Type != null && Model.Type == "Restaurant") { <text> selected </text> }>Restaurant</option>
+                    <option value="Société" @if (Model.Type != null && Model.Type == "Société") { <text> selected </text> }>Société</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-form-label col-4" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-6" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Site, htmlAttributes: new { @class = "col-form-label col-4" })
+                @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control col-6" } })
+                @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "col-form-label col-4" })
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control col-6" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <h5 class="bg-light">Adresses</h5>
+    <div class="form-row">
+        <div class="col-md-6">
+            <h6 class="text-secondary">ADRESSE DEVIS (ADRESSE PAR DÉFAUT)</h6>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseDevis.Adresse_1, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.Adresse_1, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseDevis.Adresse_2, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.Adresse_2, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseDevis.Adresse_3, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.Adresse_3, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseDevis.CodePostal, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.CodePostal, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseDevis.Ville, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.Ville, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                <select class="form-control col-8" id="type-de-client" asp-for="AdresseDevis.Pays" name="AdresseDevis.Pays">
+                    <option></option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "France") { <text> selected </text> }>France</option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "Espagne") { <text> selected </text> }>Espagne</option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "Italie") { <text> selected </text> }>Italie</option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "Portugal") { <text> selected </text> }>Portugal</option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "Royaume-Uni") { <text> selected </text> }>Royaume-Uni</option>
+                    <option @if (Model.AdresseDevis != null && Model.AdresseDevis.Pays != null && Model.AdresseDevis.Pays == "Suisse") { <text> selected </text> }>Suisse</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h6 class="text-secondary">ADRESSE FACTURE</h6>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseFacture.Adresse_1, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseFacture.Adresse_1, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseFacture.Adresse_2, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseFacture.Adresse_2, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseFacture.Adresse_3, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseFacture.Adresse_3, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseFacture.CodePostal, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseDevis.CodePostal, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AdresseFacture.Ville, htmlAttributes: new { @class = "col-form-label col-3" })
+                @Html.EditorFor(model => model.AdresseFacture.Ville, new { htmlAttributes = new { @class = "form-control col-8" } })
+            </div>
+            <div class="form-group row">
+                <label for="type-de-client" class="col-form-label col-3">Pays</label>
+                <select class="form-control col-8" id="type-de-client" asp-for="AdresseFacture.Pays" name="AdresseFacture.Pays">
+                    <option></option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "France") { <text> selected </text> }>France</option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "Espagne") { <text> selected </text> }>Espagne</option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "Italie") { <text> selected </text> }>Italie</option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "Portugal") { <text> selected </text> }>Portugal</option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "Royaume-Uni") { <text> selected </text> }>Royaume-Uni</option>
+                    <option @if (Model.AdresseFacture != null && Model.AdresseFacture.Pays != null && Model.AdresseFacture.Pays == "Suisse") { <text> selected </text> }>Suisse</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="text-right">
+        <input class="btn btn-lg btn-outline-info" type="submit" value="Valider" />
+        @Html.ActionLink("Annuler", "Index", "Home", new { area = "" }, new { @class = "btn btn-lg btn-outline-info" })
+    </div>
+}

@@ -19,6 +19,6 @@ namespace ModuleClient.Models
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<Interlocuteur> Interlocuteurs { get; set; }
-        public DbSet<Adresse> adresses { get; set; }
+        public DbSet<Adresse> Adresses { get; set; }
     }
 }
