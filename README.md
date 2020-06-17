@@ -38,9 +38,9 @@ Auteur : _SOLOFO RABONARIJAONA_
   * Affichage des détails sur un client sélectionné en aperçu :heavy_check_mark:
   * Suppression d'un client sélectionné :heavy_check_mark:
   * Ajout d'un nouveau client :heavy_check_mark:
-  * Affichage/Modification d'un client :no_entry:
-  * Affichage liste des interlocuteurs d'un client :no_entry:
-  * Affichage/Ajout/Modif de commentaire d'un client :no_entry:
+  * Affichage/Modification d'un client :heavy_check_mark:
+  * Affichage liste des interlocuteurs d'un client :heavy_check_mark:
+  * Affichage/Ajout/Modif de commentaire d'un client :heavy_check_mark:
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
