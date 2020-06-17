@@ -31,7 +31,7 @@ Auteur : _SOLOFO RABONARIJAONA_
 * Ouvir la solution ``ModuleClient.sln`` avec Visual Studio 2019
 * Démarrer le débogage de la solution ( ou appuyez sur la touche <kbd>F5</kbd> )
 
-## Historique des fonctionnalités implémentés (dynamique)
+## Historique des fonctionnalités implémentés
 ### 15/06/2020
   * Affichage de la liste des clients dans un tableau :heavy_check_mark:
   * Recherche et Tri des clients dans le tableau :heavy_check_mark:
@@ -41,6 +41,14 @@ Auteur : _SOLOFO RABONARIJAONA_
   * Affichage/Modification d'un client :no_entry:
   * Affichage liste des interlocuteurs d'un client :no_entry:
   * Affichage/Ajout/Modif de commentaire d'un client :no_entry:
+  
+### 17/06/2020
+  * Affichage de la liste des clients dans un tableau :heavy_check_mark:
+  * Recherche et Tri des clients dans le tableau :heavy_check_mark:
+  * Affichage des détails sur un client sélectionné en aperçu :heavy_check_mark:
+  * Suppression d'un client sélectionné :heavy_check_mark:
+  * Ajout d'un nouveau client :heavy_check_mark:
+  * Affichage/Modification d'un client :heavy_check_mark:
+  * Affichage liste des interlocuteurs d'un client :heavy_check_mark:
+  * Affichage/Ajout/Modif de commentaire d'un client :heavy_check_mark:
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
